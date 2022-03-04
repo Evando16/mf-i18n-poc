@@ -1,0 +1,15 @@
+.header {
+  background-color: lightcoral;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  background-color: lightyellow;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
