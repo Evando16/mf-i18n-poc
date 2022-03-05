@@ -6,8 +6,6 @@ import App from './app'
 import '../i18n';
 
 ReactDOM.render(
-    <Suspense fallback={<div>Loagin Application</div>}>
-        <App />
-    </Suspense>,
+    <App />,
     document.getElementById('root')
 );
