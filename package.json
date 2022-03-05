@@ -1,0 +1,11 @@
+{
+  "name": "home",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently --kill-others \"cd ./home && yarn && yarn start:live\" \"cd ./nav && yarn && yarn start:live\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
