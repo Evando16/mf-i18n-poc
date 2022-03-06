@@ -1,11 +1,11 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react'
-import { getTranslation } from 'nav/translation'
 import { I18nextProvider, initReactI18next, useTranslation } from 'react-i18next'
 
 import './app.css'
 import i18next from 'i18next'
 import i18n, { changeLanguage } from '../i18n'
-const Header = lazy(() => import('nav/Header'))
+import NavMf, { getTranslation } from 'nav/Microfront'
+
 
 const headerI18nInstance = () => {
   const newInstance = i18next.createInstance()
@@ -14,8 +14,6 @@ const headerI18nInstance = () => {
     ; (async () => {
       const lang = i18n.language
       const instanceCopies = await getTranslation(lang)
-      // just to simulate a loading
-      setTimeout(() => { setLoading(false) }, 3000)
 
       newInstance.init({
         fallbackLng: 'en',
@@ -32,10 +30,8 @@ const headerI18nInstance = () => {
         debug: true
       }, (err, _t) => {
         if (err) return console.log('something went wrong loading', err);
-        // setLoading(false)
+        setLoading(false)
       })
-
-      // console.log('MF lang->', newInstance.language)
 
     })()
 
@@ -43,18 +39,12 @@ const headerI18nInstance = () => {
 }
 
 const App = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { instance, loading } = headerI18nInstance()
 
-  // useEffect(() => {
-  //   // console.log('MF lang->', headerInstance.language);
-  //   console.log('Shell lang->', i18n.language);
-  //   // headerInstance.changeLanguage(i18n.language)
-  // }, [i18n.language])
-
-  // useEffect(() => {
-  //   console.log('HOME KEYS ->', i18n.store.data);
-  // }, [])
+  useEffect(() => {
+    console.log('HOME KEYS ->', i18n.store.data);
+  }, [])
 
   if (loading) {
     return <div>loading copies</div>
@@ -62,9 +52,9 @@ const App = () => {
 
   return (
     <>
-      <Suspense fallback={<div>In cases that the Header did not load properly</div>}>
+      <Suspense fallback={<div>In cases that the NavMf did not load properly</div>}>
         <I18nextProvider i18n={instance}>
-          <Header />
+          <NavMf />
         </I18nextProvider>
       </Suspense>
       <p>{t('my_translation_test')}</p>

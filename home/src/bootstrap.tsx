@@ -1,7 +1,7 @@
-import React, { Suspense } from 'react'
+import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import App from './app'
+const App = lazy(() => import('./App'))
 
 import '../i18n';
 

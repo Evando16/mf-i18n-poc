@@ -74,9 +74,7 @@ module.exports = {
                 home: 'home'
             },
             exposes: {
-                './Header': './src/header',
-                './Footer': './src/footer',
-                './translation': './src/translation.ts'
+                './Microfront': './src/indexMf'
             },
             shared: {
                 react: {

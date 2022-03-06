@@ -8,7 +8,7 @@ export const changeLanguage = (language: string) => {
 }
 
 i18n
-  .use(HttpApi)
+  // .use(HttpApi)
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
   // .use(LanguageDetector)
@@ -25,18 +25,14 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
-    // a different way to load all the files
-    backend: {
-      loadPath: './locales/{{lng}}.json'
+    resources: {
+      en: {
+        translation: require('./src/language/en.json')
+      },
+      es: {
+        translation: require('./src/language/es.json')
+      }
     }
-    // resources: {
-    //   en: {
-    //     translation: require('./public/locales/en.json')
-    //   },
-    //   es: {
-    //     translation: require('./public/locales/es.json')
-    //   }
-    // }
   });
 
 export default i18n;
