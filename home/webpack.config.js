@@ -43,6 +43,12 @@ module.exports = {
             exposes: {
                 './constant': './src/constant'
             },
+            /**
+             * any part of the i18next or react-i18next lib can be shared
+             * WHY?
+             * Because if we shared the react-i18next the instance created on the MF is not
+             * respecting the parent instance and overriding
+             */
             shared: {
                 react: {
                     singleton: true,
@@ -53,11 +59,6 @@ module.exports = {
                     singleton: true,
                     eager: true,
                     requiredVersion: pkjson.dependencies['react-dom']
-                },
-                'react-i18next': {
-                    singleton: true,
-                    strictVersion: true,
-                    requiredVersion: pkjson.dependencies['react-i18next']
                 }
             }
         }),

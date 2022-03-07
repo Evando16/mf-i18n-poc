@@ -90,12 +90,6 @@ module.exports = {
                     strictVersion: true,
                     eager: true,
                     requiredVersion: pkjson.dependencies['react-dom']
-                },
-                'react-i18next': {
-                    singleton: true,
-                    strictVersion: true,
-                    eager: true,
-                    requiredVersion: pkjson.dependencies['react-i18next']
                 }
             }
         }),

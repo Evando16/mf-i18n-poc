@@ -16,7 +16,7 @@ const App = () => {
   return (
     <>
       <Suspense fallback={<div>In cases that the Header did not load properly</div>}>
-        <Header />
+        <Header lang={i18n.language} />
       </Suspense>
       <p>{t('my_translation_test')}</p>
       <div>

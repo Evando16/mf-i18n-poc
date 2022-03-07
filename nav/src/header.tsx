@@ -3,12 +3,17 @@ import { useTranslation } from 'react-i18next'
 
 import '../i18n';
 
-const Header = () => {
+const Header = (props: { lang: string }) => {
     const { t, i18n } = useTranslation()
+    const { lang } = props
 
     useEffect(() => {
         console.log('NAV KEYS ->', i18n.store.data);
-    }, [])
+        console.log(lang);
+        if (lang !== i18n.language) {
+            i18n.changeLanguage(lang)
+        }
+    }, [lang])
 
     return (
         <div style={{
